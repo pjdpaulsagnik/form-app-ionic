@@ -34,6 +34,8 @@ export class HomePage {
       confirmPassword: this.regForm.value.confirmPassword
     };
 
+    localStorage.setItem("object",JSON.stringify(obj));
+
     console.log(obj);
 
     alert('Form Submitted succesfully!!!\n Check the values in browser console.');
