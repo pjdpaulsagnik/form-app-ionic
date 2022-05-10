@@ -85,5 +85,18 @@
         <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Register</button>
       </div>
     </form>
+
+    <p>
+      The condition is currently
+      <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+      
+    </p>
+    <button
+        type="button"
+        class="btn btn-success"
+        (click)="condition = !condition"
+        [ngClass] = "{ 'a': condition, 'b': !condition }" >
+        Toggle condition to {{condition ? 'false' : 'true'}}
+      </button>
   </div>
 </ion-content>
