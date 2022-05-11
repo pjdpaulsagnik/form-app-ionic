@@ -2,6 +2,9 @@ import { Component , ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { User } from '../models/user';
+import { ModalController } from '@ionic/angular';
+import { MyModalPage } from '../my-modal/my-modal.page';
+
 
 @Component({
   selector: 'app-home',
@@ -14,7 +17,9 @@ export class HomePage {
 
   userModal = new User();
 
-  constructor() {}
+  dataReturned: any;
+
+  constructor(public modalController: ModalController) {}
   
   onSubmit(){
     console.log(this.regForm.value);
@@ -41,4 +46,24 @@ export class HomePage {
     alert('Form Submitted succesfully!!!\n Check the values in browser console.');
     console.table(this.userModal);
   }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: MyModalPage,
+      componentProps: {
+        "paramID": 123,
+        "paramTitle": "Test Title"
+      }
+    });
+
+    modal.present();
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+  }
+
 }
