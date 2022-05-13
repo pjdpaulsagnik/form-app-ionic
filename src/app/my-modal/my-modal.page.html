@@ -18,29 +18,48 @@
         <ion-button (click)="closeModal()">Close Modal</ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="setObject()">Set Object</ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="addNewItem()">Check @OUTPUT</ion-button>
+      </ion-col>
+    </ion-row> -->
   </ion-grid>
 
   <ion-list>
-    <ion-radio-group value="biff">
+    <ion-radio-group [(ngModel)]="selectModel" (ionChange)="onChangeModel()">
       <ion-list-header>
         <ion-label>Name</ion-label>
       </ion-list-header>
-  
+
       <ion-item>
-        <ion-label>Biff</ion-label>
-        <ion-radio slot="start" value="biff"></ion-radio>
+        <ion-label>Model 1</ion-label>
+        <ion-radio slot="start" value="m1"></ion-radio>
       </ion-item>
-  
+
       <ion-item>
-        <ion-label>Griff</ion-label>
-        <ion-radio slot="start" value="griff"></ion-radio>
+        <ion-label>Model 2</ion-label>
+        <ion-radio slot="start" value="m2"></ion-radio>
       </ion-item>
-  
+
       <ion-item>
-        <ion-label>Buford</ion-label>
-        <ion-radio slot="start" value="buford"></ion-radio>
+        <ion-label>Model 3</ion-label>
+        <ion-radio slot="start" value="m3"></ion-radio>
       </ion-item>
     </ion-radio-group>
+
+    <!-- Default Progressbar -->
+    <!-- <ion-progress-bar></ion-progress-bar> -->
+
+    <!-- Colorize Progressbar -->
+    <!-- <ion-progress-bar color="primary" value="0.5"></ion-progress-bar> -->
+
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+
   </ion-list>
 
   <ion-list>
@@ -49,32 +68,17 @@
         Multiple Selection
       </ion-label>
     </ion-list-header>
-  
+
     <ion-item>
-      <ion-label>Toppings</ion-label>
-      <ion-select [(ngModel)]="selectMenu" multiple="true" cancelText="Nah" okText="Okay!" (ionChange)="onChangeToppings()">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="olives">Black Olives</ion-select-option>
-        <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
-        <ion-select-option value="peppers">Green Peppers</ion-select-option>
-        <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-        <ion-select-option value="pineapple">Pineapple</ion-select-option>
-        <ion-select-option value="sausage">Sausage</ion-select-option>
-        <ion-select-option value="Spinach">Spinach</ion-select-option>
+      <ion-label>Pricing</ion-label>
+      <ion-select [(ngModel)]="selectPrice" multiple="true" cancelText="Nah" okText="Okay!"
+        (ionChange)="onChangePrice()">
+        <ion-select-option value="p1">Price 1</ion-select-option>
+        <ion-select-option value="p2">Price 2</ion-select-option>
+        <ion-select-option value="p3">Price 3</ion-select-option>
       </ion-select>
     </ion-item>
-  
-    <ion-item>
-      <ion-label>Pets</ion-label>
-      <ion-select [(ngModel)]="selectMenu2" multiple="true" (ionChange)="onChangePets()" >
-        <ion-select-option value="bird">Bird</ion-select-option>
-        <ion-select-option value="cat">Cat</ion-select-option>
-        <ion-select-option value="dog">Dog</ion-select-option>
-        <ion-select-option value="honeybadger">Honey Badger</ion-select-option>
-      </ion-select>
-    </ion-item>
+
   </ion-list>
 
 </ion-content>

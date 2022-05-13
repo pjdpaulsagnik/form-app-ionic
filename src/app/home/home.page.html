@@ -28,65 +28,74 @@
         </ion-row>
       </ion-grid>
     </div> -->
-    <form class="form" #registerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-      <div class=" form-group">
-        <label>Name</label>
-        <ion-input type="text" class="form-control" [(ngModel)]="userModal.name" name="name" #name="ngModel" required>
-        </ion-input>
-        <span class="text-danger" *ngIf="(name.touched || registerForm.submitted) && name.errors?.required">
-          Name is required
-        </span>
+    <div class="row">
+      <div class="col-sm-4">
+
       </div>
-      <div class="form-group">
-        <label>Email</label>
-        <ion-input type="text" class="form-control" [(ngModel)]="userModal.email" name="email" #email="ngModel" required
-          email></ion-input>
-        <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.required">
-          Email is required
-        </span>
-        <!-- <span class="text-danger">
-          Enter a valid email address
-        </span> -->
+      <div class="col-sm-4">
+        <form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- <div class=" form-group">
+            <label>Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="userModal.name" name="name" #name="ngModel" required>
+            </ion-input>
+            <span class="text-danger" *ngIf="(name.touched || loginForm.submitted) && name.errors?.required">
+              Name is required
+            </span>
+          </div> -->
+          <div class="form-group">
+            <label>Email</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="userModal.email" name="email" #email="ngModel" required
+              email></ion-input>
+            <span class="text-danger" *ngIf="(email.touched || loginForm.submitted) && email.errors?.required">
+              Email is required
+            </span>
+            <!-- <span class="text-danger">
+              Enter a valid email address
+            </span> -->
+          </div>
+          <div class="form-group">
+            <!-- <label>User Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="userModal.username" name="username" #username="ngModel"
+              appValidateUserName required></ion-input>
+            <span class="text-danger" *ngIf="(username.touched || loginForm.submitted) && username.errors?.required">
+              User Name is required
+            </span> -->
+            <!-- <span class="text-danger" >
+              User Name not available
+            </span> -->
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <ion-input type="password" class="form-control" [(ngModel)]="userModal.password" name="password"
+              #password="ngModel" appPasswordPattern required></ion-input>
+            <span class="text-danger" *ngIf="(password.touched || loginForm.submitted) && password.errors?.required">
+              Password is required
+            </span>
+            <!-- <span class="text-danger">
+              Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+              letter and 1 number
+            </span> -->
+          </div>
+          <div class="form-group">
+            <!-- <label>Confirm Password</label>
+            <ion-input type="password" class="form-control" name="confirmPassword" [(ngModel)]="userModal.confirmPassword"
+              #confirmPassword="ngModel" required></ion-input>
+            <span class="text-danger"
+              *ngIf="(confirmPassword.touched || loginForm.submitted) && confirmPassword.errors?.required">
+              Confirm Password is required
+            </span> -->
+            <!-- <span class="text-danger">
+              Passwords doesnot match
+            </span> -->
+          </div>
+          <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label>User Name</label>
-        <ion-input type="text" class="form-control" [(ngModel)]="userModal.username" name="username" #username="ngModel"
-          appValidateUserName required></ion-input>
-        <span class="text-danger" *ngIf="(username.touched || registerForm.submitted) && username.errors?.required">
-          User Name is required
-        </span>
-        <!-- <span class="text-danger" >
-          User Name not available
-        </span> -->
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <ion-input type="password" class="form-control" [(ngModel)]="userModal.password" name="password"
-          #password="ngModel" appPasswordPattern required></ion-input>
-        <span class="text-danger" *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">
-          Password is required
-        </span>
-        <!-- <span class="text-danger">
-          Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
-          letter and 1 number
-        </span> -->
-      </div>
-      <div class="form-group">
-        <label>Confirm Password</label>
-        <ion-input type="password" class="form-control" name="confirmPassword" [(ngModel)]="userModal.confirmPassword"
-          #confirmPassword="ngModel" required></ion-input>
-        <span class="text-danger"
-          *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.required">
-          Confirm Password is required
-        </span>
-        <!-- <span class="text-danger">
-          Passwords doesnot match
-        </span> -->
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Register</button>
-      </div>
-    </form>
+    </div>
+    
+    
 
     <!-- <p>
       The condition is currently
@@ -101,7 +110,10 @@
         Toggle condition to {{condition ? 'false' : 'true'}}
       </button> -->
 
-    <ion-button id="trigger-button" (click)="openModal()" >Click to open modal</ion-button>
+    <!-- <ion-button id="trigger-button" (click)="openModal()" >Click to open modal</ion-button>
+    
+    <ion-button id="trigger-button" (click)="getObject()" >Get Object</ion-button> -->
+
     <!-- <ion-modal trigger="trigger-button" [swipeToClose]="true" [presentingElement]="routerOutlet.nativeEl">
       <ng-template>
         <ion-content>Modal Content</ion-content>
@@ -110,5 +122,13 @@
 
     <p *ngIf="dataReturned">{{dataReturned}}</p>
 
+    <p *ngIf="user">{{user.id}}</p>
+    <p *ngIf="user">{{user.name}}</p>
+
+
+    <!-- <app-my-modal (newItemEvent)="addItem($event)"></app-my-modal> -->
+    <!-- <ul>
+      <li *ngFor="let item of items">{{item}}</li>
+    </ul> -->
   </div>
 </ion-content>

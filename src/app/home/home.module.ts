@@ -7,7 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
 import { HomePageRoutingModule } from './home-routing.module';
 import { MyModalPageModule } from '../my-modal/my-modal.module';
 
-
 @NgModule({
   imports: [
     CommonModule,

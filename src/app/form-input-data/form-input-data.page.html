@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>form-input-data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-sm-3">
+
+      </div>
+      <div class="col-sm-6">
+        <ion-item>
+          <ion-label>Color</ion-label>
+          <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+            <ion-select-option value="black">Black</ion-select-option>
+            <ion-select-option value="blue">Blue</ion-select-option>
+            <ion-select-option value="cyan">Cyan</ion-select-option>
+            <ion-select-option value="red">Red</ion-select-option>
+            <ion-select-option value="green">Green</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label position="floating">User Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-button id="trigger-button" (click)="openModal()" >Get No. of Containers</ion-button> 
+
+        <!-- <ion-button id="trigger-button" (click)="getObject()" >Get Object</ion-button>  -->
+
+      </div>
+      <div class="col-sm-3">
+
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-sm-3">
+
+      </div>
+      <div class="col-sm-6">
+        <label for="MODEL">MODEL   :    </label>
+        <h4 *ngIf="dataReturned">{{dataReturned.model}}</h4>
+        <label for="MODEL">PRICE   :    </label>
+        <h4 *ngIf="dataReturned">{{dataReturned.price}}</h4>
+            <!-- <ul>
+              <li *ngFor="let item of dataReturned">{{item}}</li>
+            </ul> -->
+      </div>
+      <div class="col-sm-3">
+
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-3">
+
+      </div>
+      <div class="col-sm-6" style="text-align: center;">
+        <button class="btn btn-success">SAVE DATA</button>
+      </div>
+      <div class="col-sm-3">
+
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

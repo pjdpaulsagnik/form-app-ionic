@@ -8,6 +8,8 @@ import { MyModalPageRoutingModule } from './my-modal-routing.module';
 
 import { MyModalPage } from './my-modal.page';
 
+import { Capacitor } from '@capacitor/core';
+
 @NgModule({
   imports: [
     CommonModule,

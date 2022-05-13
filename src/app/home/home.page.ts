@@ -4,7 +4,8 @@ import { NgForm } from '@angular/forms';
 import { User } from '../models/user';
 import { ModalController } from '@ionic/angular';
 import { MyModalPage } from '../my-modal/my-modal.page';
-
+import { Storage } from '@capacitor/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,37 +14,39 @@ import { MyModalPage } from '../my-modal/my-modal.page';
 })
 export class HomePage {
 
-  @ViewChild('registerForm', {static:false}) regForm: NgForm;
+  @ViewChild('loginForm', {static:false}) loginForm: NgForm;
 
   userModal = new User();
 
   dataReturned: any;
 
-  constructor(public modalController: ModalController) {}
+  user: any[];
+
+  constructor(public modalController: ModalController, private router: Router) {}
   
   onSubmit(){
-    console.log(this.regForm.value);
+    console.log(this.loginForm.value);
 
-    if(this.regForm.value.password !== this.regForm.value.confirmPassword){
-      console.log("pass doesnt match");
-      //throw an error if doesnt match
-      //as of now just returning and dropping the api call.
-    }
+    // if(this.loginForm.value.password !== this.loginForm.value.confirmPassword){
+    //   console.log("pass doesnt match");
+    //   //throw an error if doesnt match
+    //   //as of now just returning and dropping the api call.
+    // }
     // api call to post the request.
 
     const obj: User = {
-      name: this.regForm.value.name,
-      username: this.regForm.value.username,
-      email: this.regForm.value.email, 
-      password: this.regForm.value.password,
-      confirmPassword: this.regForm.value.confirmPassword
+      email: this.loginForm.value.email, 
+      password: this.loginForm.value.password,
     };
 
     localStorage.setItem("object",JSON.stringify(obj));
 
     console.log(obj);
 
-    alert('Form Submitted succesfully!!!\n Check the values in browser console.');
+    alert('You have just logged in');
+
+    this.router.navigate(['/form-input-data']);
+
     console.table(this.userModal);
   }
 
@@ -65,5 +68,17 @@ export class HomePage {
       }
     });
   }
+
+  async getObject() {
+    const ret = await Storage.get({ key: 'user' });
+    this.user = JSON.parse(ret.value); 
+    console.log(this.user);
+  }
+
+  addItem(newItem: string) {
+    console.log("hiiiiiiiiiiiiiiiii",newItem);
+    this.user.push(newItem);
+  }
+
 
 }
