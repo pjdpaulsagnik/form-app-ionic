@@ -6,6 +6,7 @@
 
 <ion-content>
 
+  <form class="form" #saveData="ngForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="container mt-3">
     <div class="row">
       <div class="col-sm-3">
@@ -14,7 +15,7 @@
       <div class="col-sm-6">
         <ion-item>
           <ion-label>Color</ion-label>
-          <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+          <ion-select [(ngModel)]="color" name="color" multiple="true" cancelText="Nah" okText="Okay!">
             <ion-select-option value="black">Black</ion-select-option>
             <ion-select-option value="blue">Blue</ion-select-option>
             <ion-select-option value="cyan">Cyan</ion-select-option>
@@ -25,7 +26,7 @@
       
         <ion-item>
           <ion-label position="floating">User Name</ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="username" name="username" ></ion-input>
         </ion-item>
 
         <ion-button id="trigger-button" (click)="openModal()" >Get No. of Containers</ion-button> 
@@ -60,12 +61,13 @@
 
       </div>
       <div class="col-sm-6" style="text-align: center;">
-        <button class="btn btn-success">SAVE DATA</button>
+        <button class="btn btn-success" [disabled]="!saveData.valid">SAVE DATA</button>
       </div>
       <div class="col-sm-3">
 
       </div>
     </div>
   </div>
+</form>
   
 </ion-content>

@@ -4,6 +4,8 @@ import { MyModalPage } from '../my-modal/my-modal.page';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@capacitor/storage';
 import { Usermodelprice } from '../models/user-modal';
+import { Router } from '@angular/router';
+import { UserTotalModel } from '../models/user-all-data';
 
 @Component({
   selector: 'app-form-input-data',
@@ -12,15 +14,29 @@ import { Usermodelprice } from '../models/user-modal';
 })
 export class FormInputDataPage implements OnInit {
 
-  constructor(public toastController: ToastController,public modalController: ModalController) { }
+  constructor(public toastController: ToastController,public modalController: ModalController, private router : Router) { }
 
-  dataReturned: Usermodelprice[];
+  dataReturned: Usermodelprice;
 
   user: any[];
 
+  color: string[];
+  username: string;
 
   ngOnInit() {
   }
+
+  onSubmit()
+  {
+    const obj : UserTotalModel = {
+      color: this.color,
+      username: this.username,
+      model: this.dataReturned.model,
+      price: this.dataReturned.price
+    }
+     this.router.navigateByUrl('/form-output-data',{state : obj})
+  }
+
 
   async openModal() {
     const modal = await this.modalController.create({
