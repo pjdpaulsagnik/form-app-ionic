@@ -58,42 +58,42 @@ export class FormInputDataPage implements OnInit {
     });
   }
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
-      duration: 2000
-    });
-    toast.present();
-  }
+  // async presentToast() {
+  //   const toast = await this.toastController.create({
+  //     message: 'Your settings have been saved.',
+  //     duration: 2000
+  //   });
+  //   toast.present();
+  // }
 
-  async presentToastWithOptions() {
-    const toast = await this.toastController.create({
-      header: 'Toast header',
-      message: 'Click to Close',
-      icon: 'information-circle',
-      position: 'top',
-      buttons: [
-        {
-          side: 'start',
-          icon: 'star',
-          text: 'Favorite',
-          handler: () => {
-            console.log('Favorite clicked');
-          }
-        }, {
-          text: 'Done',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    await toast.present();
+  // async presentToastWithOptions() {
+  //   const toast = await this.toastController.create({
+  //     header: 'Toast header',
+  //     message: 'Click to Close',
+  //     icon: 'information-circle',
+  //     position: 'top',
+  //     buttons: [
+  //       {
+  //         side: 'start',
+  //         icon: 'star',
+  //         text: 'Favorite',
+  //         handler: () => {
+  //           console.log('Favorite clicked');
+  //         }
+  //       }, {
+  //         text: 'Done',
+  //         role: 'cancel',
+  //         handler: () => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   await toast.present();
 
-    const { role } = await toast.onDidDismiss();
+  //   const { role } = await toast.onDidDismiss();
 
-  }
+  // }
 
   async getObject() {
     const ret = await Storage.get({ key: 'user' });

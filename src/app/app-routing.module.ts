@@ -23,6 +23,18 @@ const routes: Routes = [
     path: 'form-output-data',
     loadChildren: () => import('./form-output-data/form-output-data.module').then( m => m.FormOutputDataPageModule)
   },
+  {
+    path: 'exam-form',
+    loadChildren: () => import('./exam-form/exam-form.module').then( m => m.ExamFormPageModule)
+  },
+  {
+    path: 'create-exam-details',
+    loadChildren: () => import('./create-exam-details/create-exam-details.module').then( m => m.CreateExamDetailsPageModule)
+  },
+  {
+    path: 'search-exam',
+    loadChildren: () => import('./search-exam/search-exam.module').then( m => m.SearchExamPageModule)
+  },
 ];
 
 @NgModule({

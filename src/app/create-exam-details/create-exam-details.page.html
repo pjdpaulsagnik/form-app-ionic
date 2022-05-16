@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>create-exam-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-sm-3">
+  
+        </div>
+        <div class="col-sm-6">
+        
+          <ion-item>
+            <ion-label position="floating">Subject Name</ion-label>
+            <ion-input [(ngModel)]="subjectname" name="subjectname" ></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label position="floating">Subject Code</ion-label>
+            <ion-input [(ngModel)]="subjectcode" name="subjectcode" ></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="floating">Full Marks</ion-label>
+            <ion-input [(ngModel)]="fullmarks" name="fullmarks" ></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="floating">Cut-Off Marks</ion-label>
+            <ion-input [(ngModel)]="cutoffmarks" name="cutoffmarks" ></ion-input>
+          </ion-item>
+
+          <!-- <ion-button id="trigger-button" (click)="getObject()" >Get Object</ion-button>  -->
+  
+        </div>
+        <div class="col-sm-3">
+  
+        </div>
+      </div>
+  
+      <div class="row mt-5">
+        <div class="col-sm-3">
+  
+        </div>
+        <div class="col-sm-6">
+          
+        </div>
+        <div class="col-sm-3">
+  
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-3">
+  
+        </div>
+        <div class="col-sm-6" style="text-align: center;">
+          <button class="btn btn-success" (click)="closeModal()" >SAVE DATA</button>
+        </div>
+        <div class="col-sm-3">
+  
+        </div>
+      </div>
+    </div>
+  
+</ion-content>

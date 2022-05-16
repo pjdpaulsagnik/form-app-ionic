@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>exam-form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+        <form class="form" #examForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- <div class=" form-group">
+            <label>Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="userModal.name" name="name" #name="ngModel" required>
+            </ion-input>
+            <span class="text-danger" *ngIf="(name.touched || examForm.submitted) && name.errors?.required">
+              Name is required
+            </span>
+          </div> -->
+          <div class="form-group">
+            <label>Exam Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="examModel.examname" name="examname" #examname="ngModel" required
+              ></ion-input>
+            <span class="text-danger" *ngIf="(examname.touched || examForm.submitted) && examname.errors?.required">
+              Exam Name is required
+            </span>
+            <!-- <span class="text-danger">
+              Enter a valid email address
+            </span> -->
+          </div>
+          <div class="form-group">
+            <label>Exam Date</label>
+            <!-- <ion-datetime min="1994-03-14"  max="2022-12-09" (ionChange)="datetimecheck()" required></ion-datetime> -->
+            <ion-item button="true" id="open-date-input">
+              <ion-label>Date</ion-label>
+              <ion-text slot="end">{{ dateValue }}</ion-text>
+              <ion-popover trigger="open-date-input" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime min="1994-03-14" max="2022-12-09"
+                    #popoverDate
+                    presentation="date"
+                    (ionChange)="dateValue = formatDate(popoverDate.value)"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+            <!-- <span class="text-danger" *ngIf="(examdate.touched || examForm.submitted) && examdate.errors?.required">
+              Exam Date is required
+            </span> -->
+            <!-- <span class="text-danger" >
+              User Name not available
+            </span> -->
+          </div>
+          <div class="form-group">
+            <ion-item button="true" id="open-time-input">
+              <ion-label>Time</ion-label>
+              <ion-text slot="end">{{ timeValue }}</ion-text>
+              <ion-popover trigger="open-time-input" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime
+                    #popoverTime
+                    presentation="time"
+                    (ionChange)="timeValue = formatTime(popoverTime.value)"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+          </div>
+          <div class="form-group">
+            <!-- <label>Exam Time</label>
+            <ion-input type="time" class="form-control" [(ngModel)]="examModel.examtime" name="examtime" #examtime="ngModel"
+               required></ion-input>
+            <span class="text-danger" *ngIf="(examtime.touched || examForm.submitted) && examtime.errors?.required">
+              Exam Time is required
+            </span> -->
+            <!-- <span class="text-danger" >
+              User Name not available
+            </span> -->
+          </div>
+          <ion-button id="trigger-button" (click)="openModal()" >CREATE EXAM DETAILS</ion-button> 
+          
+          <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success" [disabled]="!examForm.valid">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    
+
+    <!-- <p>
+      The condition is currently
+      <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+      
+    </p>
+    <button
+        type="button"
+        class="btn btn-success"
+        (click)="condition = !condition"
+        [ngClass] = "{ 'a': condition, 'b': !condition }" >
+        Toggle condition to {{condition ? 'false' : 'true'}}
+      </button> -->
+
+    <!-- <ion-button id="trigger-button" (click)="openModal()" >Click to open modal</ion-button>
+    
+    <ion-button id="trigger-button" (click)="getObject()" >Get Object</ion-button> -->
+
+    <!-- <ion-modal trigger="trigger-button" [swipeToClose]="true" [presentingElement]="routerOutlet.nativeEl">
+      <ng-template>
+        <ion-content>Modal Content</ion-content>
+      </ng-template>
+    </ion-modal> -->
+
+    <p *ngIf="dataReturned">{{dataReturned.subjectname}}</p>
+    <p *ngIf="dataReturned">{{dataReturned.subjectcode}}</p>
+
+
+    <!-- <p *ngIf="user">{{user.id}}</p>
+    <p *ngIf="user">{{user.name}}</p> -->
+
+
+    <!-- <app-my-modal (newItemEvent)="addItem($event)"></app-my-modal> -->
+    <!-- <ul>
+      <li *ngFor="let item of items">{{item}}</li>
+    </ul> -->
+  </div>
+</ion-content>

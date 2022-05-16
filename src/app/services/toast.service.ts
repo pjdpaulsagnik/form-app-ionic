@@ -18,4 +18,12 @@ export class ToastService{
     toast.present();
   }
 
+  async presentResponseToast() {
+    const toast = await this.toastController.create({
+      message: 'Data Submitted Successfully',
+      duration: 1000
+    });
+    toast.present();
+  }
+
 }
