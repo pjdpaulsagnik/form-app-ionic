@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'exam-form',
     pathMatch: 'full'
   },
   {
@@ -34,6 +34,14 @@ const routes: Routes = [
   {
     path: 'search-exam',
     loadChildren: () => import('./search-exam/search-exam.module').then( m => m.SearchExamPageModule)
+  },
+  {
+    path: 'search-results',
+    loadChildren: () => import('./search-results/search-results.module').then( m => m.SearchResultsPageModule)
+  },
+  {
+    path: 'exam-details-by-id',
+    loadChildren: () => import('./exam-details-by-id/exam-details-by-id.module').then( m => m.ExamDetailsByIdPageModule)
   },
 ];
 

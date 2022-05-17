@@ -105,6 +105,7 @@ export class ExamFormPage implements OnInit {
           }
         }, error => {
           console.log("This is the Error Response from API = ",error);
+          this.toastService.presentErrorToast(error);
         })
 
   }

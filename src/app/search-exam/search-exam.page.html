@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>search_exam</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,47 +14,78 @@
 
       </div>
       <div class="col-sm-6">
-      
-        <ion-item>
-          <ion-label position="floating">Subject Name</ion-label>
-          <ion-input [(ngModel)]="subjectname" name="subjectname" ></ion-input>
-        </ion-item>
+        <form class="form" #examForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- <div class=" form-group">
+            <label>Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="userModal.name" name="name" #name="ngModel" required>
+            </ion-input>
+            <span class="text-danger" *ngIf="(name.touched || examForm.submitted) && name.errors?.required">
+              Name is required
+            </span>
+          </div> -->
+          <div class="form-group">
+            <label>Exam Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="searchExamModel.keyword" name="keyword"
+              #keyword="ngModel" required></ion-input>
+            <span class="text-danger" *ngIf="(keyword.touched || examForm.submitted) && keyword.errors?.required">
+              Exam Name is required
+            </span>
+            <!-- <span class="text-danger">
+              Enter a valid email address
+            </span> -->
+          </div>
+          <div class="form-group">
+            <!-- <label>Exam Date From</label> -->
+            <!-- <ion-datetime min="1994-03-14"  max="2022-12-09" (ionChange)="datetimecheck()" required></ion-datetime> -->
+            <ion-item button="true" id="open-date-input-from">
+              <ion-label>Date From</ion-label>
+              <ion-text slot="end">{{ dateValue1 }}</ion-text>
+              <ion-popover trigger="open-date-input-from" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime min="1994-03-14" max="2022-12-09" #popoverDate presentation="date"
+                    (ionChange)="dateValue1 = formatDateFrom(popoverDate.value)"></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+            <!-- <span class="text-danger" *ngIf="(examdate.touched || examForm.submitted) && examdate.errors?.required">
+              Exam Date is required
+            </span> -->
+            <!-- <span class="text-danger" >
+              User Name not available
+            </span> -->
+          </div>
+          <div class="form-group">
+            <ion-item button="true" id="open-date-input-to">
+              <ion-label>Date To</ion-label>
+              <ion-text slot="end">{{ dateValue2 }}</ion-text>
+              <ion-popover trigger="open-date-input-to" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime min="1994-03-14" max="2022-12-09" #popoverDateTo presentation="date"
+                    (ionChange)="dateValue2 = formatDateTo(popoverDateTo.value)"></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+          </div>
+          <div class="form-group">
+            <!-- <label>Exam Time</label>
+            <ion-input type="time" class="form-control" [(ngModel)]="examModel.examtime" name="examtime" #examtime="ngModel"
+               required></ion-input>
+            <span class="text-danger" *ngIf="(examtime.touched || examForm.submitted) && examtime.errors?.required">
+              Exam Time is required
+            </span> -->
+            <!-- <span class="text-danger" >
+              User Name not available
+            </span> -->
+          </div>
 
-        <!-- Datetime in popover with cover element -->
-        <ion-item button="true" id="open-date-input">
-          <ion-label>Date</ion-label>
-          <ion-text slot="end">{{ dateValue }}</ion-text>
-          <ion-popover trigger="open-date-input" show-backdrop="false">
-            <ng-template>
-              <ion-datetime
-                #popoverDatetime
-                presentation="date"
-                (ionChange)="dateValue = formatDate(popoverDatetime.value)"
-              ></ion-datetime>
-            </ng-template>
-          </ion-popover>
-        </ion-item>
 
-<!-- Datetime in popover with input -->
-<!-- <ion-item>
-  <ion-input [value]="dateValue2"></ion-input>
-  <ion-button fill="clear" id="open-date-input-2">
-    <ion-icon icon="calendar"></ion-icon>
-  </ion-button>
-  <ion-popover trigger="open-date-input-2" show-backdrop="false">
-    <ng-template>
-      <ion-datetime
-        #popoverDatetime2
-        presentation="date"
-        (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"
-      ></ion-datetime>
-    </ng-template>
-  </ion-popover>
-</ion-item> -->
-
-        <!-- <ion-button id="trigger-button" (click)="getObject()" >Get Object</ion-button>  -->
-
+          <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success" [disabled]="!examForm.valid">Search</button>
+            <!-- [disabled]="!examForm.valid" -->
+          </div>
+        </form>
       </div>
+
       <div class="col-sm-3">
 
       </div>
@@ -62,7 +96,7 @@
 
       </div>
       <div class="col-sm-6">
-        
+
       </div>
       <div class="col-sm-3">
 
@@ -73,7 +107,7 @@
 
       </div>
       <div class="col-sm-6" style="text-align: center;">
-        <button class="btn btn-success" (click)="closeModal()" >SAVE DATA</button>
+        <!-- <button class="btn btn-success" (click)="closeModal()">SAVE DATA</button> -->
       </div>
       <div class="col-sm-3">
 

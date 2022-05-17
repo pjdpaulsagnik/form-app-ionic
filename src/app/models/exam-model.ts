@@ -22,3 +22,9 @@ export class examdataall{
     exm_doc : string;
     Exam_Dtl : examdetails[];
 }
+
+export class SearchExam{
+    keyword : string;
+    fromdate : any;
+    todate : any; 
+}

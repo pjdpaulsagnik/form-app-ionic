@@ -26,4 +26,11 @@ export class ToastService{
     toast.present();
   }
 
+  async presentErrorToast(obj) {
+    const toast = await this.toastController.create({
+      message: obj.message,
+      duration: 1000
+    });
+    toast.present();
+  }
 }
