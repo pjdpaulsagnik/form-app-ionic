@@ -29,7 +29,6 @@ export class SearchExamPage implements OnInit {
 
   examtimeto : string;
 
-
   formatDateFrom(value: string) {
     this.examdatefrom = format(parseISO(value), 'yyyy-MM-dd');
     return this.examdatefrom;
@@ -48,25 +47,30 @@ export class SearchExamPage implements OnInit {
       todate : this.examtimeto
     }
 
-    await this.examService.searchExam(obj).subscribe( response => 
-      {
-        if(response.type==4 && response.body.Ds != null)
-        {
-          console.log("SEARCH RESPONSE : ",response);
-          // console.log("This is the Response from API = ",response.type);
-          console.log("This is the Response from API = ",response.body.Ds.Table);
-          this.examService.searchedData = response.body.Ds.Table;
-          this.router.navigateByUrl('/search-results',{state : response.body.Ds.Table})
-          this.toastService.presentResponseToast();
-        }
-        else
-        {
-          console.log("Error --> Data Null")
-        }
-      }, error => {
-        console.log("This is the Error Response from API = ",error);
-        this.toastService.presentErrorToast(error.Msg);
-      })
+    this.examService.objectToBeSearched = obj;
+
+    this.router.navigateByUrl('/search-results', {state : obj});
+    
+    // await this.examService.searchExam(obj).subscribe( response => 
+    //   {
+    //     // console.log("Response : ",response)
+    //     if(response.type==4 && response.body.NoOfRecord != "0")
+    //     {
+    //       console.log("SEARCH RESPONSE : ",response);
+    //       // console.log("This is the Response from API = ",response.type);
+    //       console.log("This is the Response from API = ",response.body.Ds.Table)
+    //       this.examService.searchedData = response.body.Ds.Table;
+    //       this.router.navigateByUrl('/search-results',{state : response.body.Ds.Table})
+    //       this.toastService.presentDataFoundToast();
+    //     }
+    //     else if( response.type==4 && response.body.NoOfRecord == "0")
+    //     {
+    //       this.toastService.presentAlert();
+    //     }
+    //   }, error => {
+    //     console.log("This is the Error Response from API = ",error);
+    //     this.toastService.presentErrorToast(error.Msg);
+    //   })
 
   }
 

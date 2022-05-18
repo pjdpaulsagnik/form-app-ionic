@@ -1,11 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Search-Results</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="search-exam"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <br>
   <br>
-  <app-exam-searched-object [searchedObject]="x" *ngFor="let x of obj"></app-exam-searched-object>
+  <div *ngIf="obj.length==0">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <div *ngIf="obj.length>0">
+    <app-exam-searched-object [searchedObject]="x" *ngFor="let x of obj"></app-exam-searched-object>
+  </div>
 </ion-content>

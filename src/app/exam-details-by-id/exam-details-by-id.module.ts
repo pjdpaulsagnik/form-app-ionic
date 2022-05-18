@@ -8,6 +8,8 @@ import { ExamDetailsByIdPageRoutingModule } from './exam-details-by-id-routing.m
 
 import { ExamDetailsByIdPage } from './exam-details-by-id.page';
 
+import { SingleExamRecordObjectComponent } from '../single-exam-record-object/single-exam-record-object.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { ExamDetailsByIdPage } from './exam-details-by-id.page';
     IonicModule,
     ExamDetailsByIdPageRoutingModule
   ],
-  declarations: [ExamDetailsByIdPage]
+  declarations: [ExamDetailsByIdPage,SingleExamRecordObjectComponent]
 })
 export class ExamDetailsByIdPageModule {}

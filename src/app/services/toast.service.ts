@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { ToastController } from '@ionic/angular';
 
 export class ToastService{
 
-  constructor(private toastController: ToastController){}
+  constructor(private toastController: ToastController, private alertController : AlertController){}
   
   async presentToast() {
     const toast = await this.toastController.create({
@@ -26,11 +26,34 @@ export class ToastService{
     toast.present();
   }
 
+  async presentDataFoundToast() {
+    const toast = await this.toastController.create({
+      message: 'Records found Successfully',
+      duration: 1000
+    });
+    toast.present();
+  }
+
   async presentErrorToast(obj) {
     const toast = await this.toastController.create({
       message: obj.message,
       duration: 1000
     });
     toast.present();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: ' ',
+      message: 'No Record Found',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 }

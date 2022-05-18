@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>exam-details-by-id</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <br>
+  <br>
+  <div *ngIf="examRecords.length==0">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <app-single-exam-record-object [searchedObject]="x" *ngFor="let x of examRecords"></app-single-exam-record-object>
 </ion-content>

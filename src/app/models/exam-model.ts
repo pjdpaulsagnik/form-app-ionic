@@ -28,3 +28,11 @@ export class SearchExam{
     fromdate : any;
     todate : any; 
 }
+
+export class SingleObjectExamDetails{
+    exmd_id: string;
+    exmd_subject_name: string;
+    exmd_subject_code: string;
+    exmd_full_marks: number;
+    exmd_cutoff_marks: number;
+}

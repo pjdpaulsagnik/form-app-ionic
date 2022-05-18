@@ -1,4 +1,9 @@
 <!-- <p>
+  single-exam-record-object works!
+</p> -->
+
+
+<!-- <p>
   exam-searched-object works!
 </p> -->
 <div class="container" style="margin-bottom: 20%;">
@@ -9,48 +14,10 @@
     <div class="col-sm-6">
       <ion-item>
         <ion-label class="ion-text-wrap">
-          EXAM NAME
-        </ion-label>
-        <ion-text color="primary">
-          <h2>{{searchedObject.exm_id}}</h2>
-        </ion-text>
-      </ion-item>
-    </div>
-    <div class="col-sm-3">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-3">
-
-    </div>
-    <div class="col-sm-6">
-      <ion-item>
-        <ion-label class="ion-text-wrap">
-          EXAM DATE
-        </ion-label>
-        <ion-text color="primary">
-          <h2>{{searchedObject.exm_date | date: 'dd/MM/yyyy' }}</h2>
-        </ion-text>
-      </ion-item>
-    </div>
-    <div class="col-sm-3">
-
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-3">
-
-    </div>
-    <div class="col-sm-6">
-      <ion-item>
-        <ion-label class="ion-text-wrap">
           EXAM ID
         </ion-label>
         <ion-text color="primary">
-          <h2>{{searchedObject.exm_id}}</h2>
+          <h2>{{searchedObject.exmd_id}}</h2>
         </ion-text>
       </ion-item>
     </div>
@@ -66,10 +33,10 @@
     <div class="col-sm-6">
       <ion-item>
         <ion-label class="ion-text-wrap">
-          EXAM TIME
+          EXAM SUBJECT NAME
         </ion-label>
         <ion-text color="primary">
-          <h2>{{searchedObject.exm_time}}</h2>
+          <h2>{{searchedObject.exmd_subject_name}}</h2>
         </ion-text>
       </ion-item>
     </div>
@@ -78,16 +45,72 @@
     </div>
   </div>
 
-  <div class="row mt-4">
+  <div class="row">
     <div class="col-sm-3">
 
     </div>
-    <div class="col-sm-6 d-flex justify-content-between">
-      <button type="submit" class="btn btn-success" (click)="getDetailsExam()">Search</button>
-      <button type="submit" class="btn btn-danger" (click)="presentAlert()" >Delete</button>
+    <div class="col-sm-6">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          EXAM SUBJECT CODE
+        </ion-label>
+        <ion-text color="primary">
+          <h2>{{searchedObject.exmd_subject_code}}</h2>
+        </ion-text>
+      </ion-item>
     </div>
     <div class="col-sm-3">
 
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-6">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          EXAM FULL MARKS
+        </ion-label>
+        <ion-text color="primary">
+          <h2>{{searchedObject.exmd_full_marks}}</h2>
+        </ion-text>
+      </ion-item>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-6">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          EXAM CUT-OFF MARKS
+        </ion-label>
+        <ion-text color="primary">
+          <h2>{{searchedObject.exmd_cutoff_marks}}</h2>
+        </ion-text>
+      </ion-item>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-6">
+      <button type="submit" class="btn btn-success" (click)="getDetailsExam()">Search</button>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+  </div> -->
 </div>

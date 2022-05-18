@@ -17,7 +17,7 @@ import { ToastService } from '../services/toast.service';
 })
 export class ExamFormPage implements OnInit {
 
-  constructor(public toastController: ToastController,public modalController: ModalController, private examRegService : ApiService, private toastService : ToastService) { }
+  constructor(public toastController: ToastController,public modalController: ModalController, private examRegService : ApiService, private toastService : ToastService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -102,6 +102,7 @@ export class ExamFormPage implements OnInit {
           {
             console.log("This is the Response from API = ",response.type);
             this.toastService.presentResponseToast();
+            this.router.navigateByUrl('/search-exam');
           }
         }, error => {
           console.log("This is the Error Response from API = ",error);

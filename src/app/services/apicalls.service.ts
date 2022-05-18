@@ -16,7 +16,11 @@ export class ApiService
 
     fetchExamDetailsApi = "https://sblmagico.com/EXAMMMH/New/Exam/GetExamDetails";
 
+    deleteExambyIDApi = "https://sblmagico.com/EXAMMMH/New/Exam/DeleteExam";
+
     completeregurl = "";
+
+    objectToBeSearched : SearchExam;
 
     searchedData : searchModel[] = [];
 
@@ -78,5 +82,24 @@ export class ApiService
     });
 
     return this.http.request<any>(req);
-}
+  }
+
+  deleteExamByusingId(obj): Observable<HttpEvent<any>> {
+
+    console.log("Object from form : ",obj);
+    const formData: FormData = new FormData();
+    // let postObj:FormData={
+    //     "keyword": obj.keyword
+    // }
+    formData.append('exm_id', obj);      
+
+    console.log("FORM DATA :",formData);
+
+    const req = new HttpRequest('POST', `${this.deleteExambyIDApi}`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request<any>(req);
+  }
 }

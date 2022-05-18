@@ -12,7 +12,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Exam Form', url: '/exam-form', icon: 'mail' },
     { title: 'Search Exam', url: '/search-exam', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
+    // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
     // { title: 'Archived', url: 'archived', icon: 'archive' },
     // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
