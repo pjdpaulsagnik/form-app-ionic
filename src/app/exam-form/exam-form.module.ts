@@ -10,6 +10,7 @@ import { ExamFormPage } from './exam-form.page';
 
 import { CreateExamDetailsPage } from '../create-exam-details/create-exam-details.page';
 import { HttpClientModule } from '@angular/common/http';
+import { SingleExamRecordObjectComponent } from '../single-exam-record-object/single-exam-record-object.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     ExamFormPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [ExamFormPage]
+  declarations: [ExamFormPage,SingleExamRecordObjectComponent]
 })
 export class ExamFormPageModule {}

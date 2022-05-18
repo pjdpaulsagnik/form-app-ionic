@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { SingleObjectExamDetails } from '../models/exam-model';
 
 @Component({
@@ -6,12 +6,17 @@ import { SingleObjectExamDetails } from '../models/exam-model';
   templateUrl: './single-exam-record-object.component.html',
   styleUrls: ['./single-exam-record-object.component.scss'],
 })
-export class SingleExamRecordObjectComponent implements OnInit {
+export class SingleExamRecordObjectComponent implements OnInit, OnChanges {
+
+  @Input('searchedObject') searchedObject : SingleObjectExamDetails;
 
   constructor() { }
 
   ngOnInit() {}
 
-  @Input('searchedObject') searchedObject : SingleObjectExamDetails;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("Changes Made : ",this.searchedObject)
+  }
+
 
 }

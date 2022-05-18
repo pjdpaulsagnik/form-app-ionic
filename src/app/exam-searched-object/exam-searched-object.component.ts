@@ -1,27 +1,36 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { searchModel } from '../models/search-model';
 import { ApiService } from '../services/apicalls.service';
 import { ToastService } from '../services/toast.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-exam-searched-object',
   templateUrl: './exam-searched-object.component.html',
   styleUrls: ['./exam-searched-object.component.scss'],
 })
-export class ExamSearchedObjectComponent implements OnInit, OnChanges {
+export class ExamSearchedObjectComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input('searchedObject') searchedObject : searchModel;
+
+  subscribeexamsearch : Subscription;
 
   constructor( private router : Router, private apiService : ApiService, private alertController : AlertController, private toastService : ToastService, ) { }
 
   ngOnInit() {
     console.log("Searched Object : ",this.searchedObject);
   }
+  
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("Inside On changes :",this.searchedObject)
+  }
+
+  ngOnDestroy(): void {
+    console.log(" subscribe : ",this.subscribeexamsearch);
+    this.subscribeexamsearch?.unsubscribe();
   }
 
 
@@ -52,7 +61,7 @@ export class ExamSearchedObjectComponent implements OnInit, OnChanges {
           handler: () => {
             console.log('Confirm Okay');
             
-            this.apiService.deleteExamByusingId(this.searchedObject.exm_id).subscribe( response => {
+            this.subscribeexamsearch = this.apiService.deleteExamByusingId(this.searchedObject.exm_id).subscribe( response => {
               if( response.type == 4 )
               {
                 this.router.navigateByUrl("/search-exam");
@@ -60,7 +69,7 @@ export class ExamSearchedObjectComponent implements OnInit, OnChanges {
             }, error => {
                 console.log("ERROR : ",error);
             })
-            
+
             const onClosedData: string = "Wrapped Up!";
             this.toastService.presentToast();
           }

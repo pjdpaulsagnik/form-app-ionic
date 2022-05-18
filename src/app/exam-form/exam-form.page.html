@@ -114,16 +114,24 @@
     
     <ion-button id="trigger-button" (click)="getObject()" >Get Object</ion-button> -->
 
-    <!-- <ion-modal trigger="trigger-button" [swipeToClose]="true" [presentingElement]="routerOutlet.nativeEl">
-      <ng-template>
-        <ion-content>Modal Content</ion-content>
-      </ng-template>
-    </ion-modal> -->
+    <!-- <p *ngIf="dataReturned">{{dataReturned.subjectname}}</p>
+    <p *ngIf="dataReturned">{{dataReturned.subjectcode}}</p> -->
 
-    <p *ngIf="dataReturned">{{dataReturned.subjectname}}</p>
-    <p *ngIf="dataReturned">{{dataReturned.subjectcode}}</p>
-
-
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <br>
+          <br>
+          <div *ngIf="totaldataexam.length==0">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+          <app-single-exam-record-object [searchedObject]="x" *ngFor="let x of totaldataexam"></app-single-exam-record-object>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+  
     <!-- <p *ngIf="user">{{user.id}}</p>
     <p *ngIf="user">{{user.name}}</p> -->
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SearchExam } from '../models/exam-model';
 import { searchModel } from '../models/search-model';
 import { ApiService } from '../services/apicalls.service';
@@ -9,15 +10,17 @@ import { ToastService } from '../services/toast.service';
   templateUrl: './search-results.page.html',
   styleUrls: ['./search-results.page.scss'],
 })
-export class SearchResultsPage implements OnInit {
+export class SearchResultsPage implements OnInit, OnDestroy {
 
   constructor(public examService : ApiService, private toastService : ToastService) { }
 
   public obj : searchModel[] = [] ;
 
+  searchExam : Subscription;
+
   ngOnInit() {
 
-    this.examService.searchExam(this.examService.objectToBeSearched).subscribe( response => 
+    this.searchExam = this.examService.searchExam(this.examService.objectToBeSearched).subscribe( response => 
       {
         // console.log("Response : ",response)
         if(response.type==4 && response.body.NoOfRecord != "0")
@@ -41,6 +44,10 @@ export class SearchResultsPage implements OnInit {
 
     console.log("Object passed through params : ",this.obj);
 
+  }
+
+  ngOnDestroy(): void {
+    this.searchExam.unsubscribe();
   }
 
   ionViewWillEnter()

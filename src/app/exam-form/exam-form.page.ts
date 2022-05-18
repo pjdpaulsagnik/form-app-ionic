@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { examdataall, examdetails, exammodel } from '../models/exam-model';
+import { examdataall, examdetails, exammodel, SingleObjectExamDetails } from '../models/exam-model';
 import { IonDatetime } from '@ionic/angular';
 import { format, parseISO } from 'date-fns';
 import { ToastController } from '@ionic/angular';
@@ -9,6 +9,7 @@ import { CreateExamDetailsPage } from '../create-exam-details/create-exam-detail
 import { Time } from '@angular/common';
 import { ApiService } from '../services/apicalls.service';
 import { ToastService } from '../services/toast.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-exam-form',
@@ -33,6 +34,8 @@ export class ExamFormPage implements OnInit {
   examdate : string;
 
   examtime : string;
+
+  examRecords : SingleObjectExamDetails[]=[];
 
   datetimecheck()
   {
