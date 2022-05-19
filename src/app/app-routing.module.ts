@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'exam-details-by-id',
     loadChildren: () => import('./exam-details-by-id/exam-details-by-id.module').then( m => m.ExamDetailsByIdPageModule)
   },
+  {
+    path: 'edit-exam-form',
+    loadChildren: () => import('./edit-exam-form/edit-exam-form.module').then( m => m.EditExamFormPageModule)
+  },
 ];
 
 @NgModule({

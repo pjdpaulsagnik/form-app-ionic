@@ -83,16 +83,21 @@ export class ExamSearchedObjectComponent implements OnInit, OnChanges, OnDestroy
     console.log('onDidDismiss resolved with role', role);
   }
 
-  deleteExambyId()
-  {
-     this.apiService.deleteExamByusingId(this.searchedObject.exm_id).subscribe( response => {
-        if( response.type == 4 )
-        {
-          this.router.navigateByUrl("/search-exam");
-        }
-     }, error => {
-        console.log("ERROR : ",error);
-     })
+  // deleteExambyId()
+  // {
+  //    this.apiService.deleteExamByusingId(this.searchedObject.exm_id).subscribe( response => {
+  //       if( response.type == 4 )
+  //       {
+  //         this.router.navigateByUrl("/search-exam");
+  //       }
+  //    }, error => {
+  //       console.log("ERROR : ",error);
+  //    })
+  // }
+
+  editDetails(){
+    this.apiService.editExamData = this.searchedObject;
+    this.router.navigateByUrl('/edit-exam-form');
   }
 
 }

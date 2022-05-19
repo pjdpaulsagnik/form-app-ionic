@@ -24,6 +24,7 @@ export class ApiService
 
     searchedData : searchModel[] = [];
 
+    editExamData : searchModel;
 
 
     registerApiFunction(object): Observable<HttpEvent<any>> {

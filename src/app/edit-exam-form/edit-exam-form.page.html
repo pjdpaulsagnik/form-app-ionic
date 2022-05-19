@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit-exam-form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+        <form class="form" #examForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- <div class=" form-group">
+            <label>Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="userModal.name" name="name" #name="ngModel" required>
+            </ion-input>
+            <span class="text-danger" *ngIf="(name.touched || examForm.submitted) && name.errors?.required">
+              Name is required
+            </span>
+          </div> -->
+          <div class="form-group">
+            <label>Exam Name</label>
+            <ion-input type="text" class="form-control" [(ngModel)]="examModel.exm_name" name="exm_name" #exm_name="ngModel" required
+              ></ion-input>
+            <span class="text-danger" *ngIf="(exm_name.touched || examForm.submitted) && exm_name.errors?.required">
+              Exam Name is required
+            </span>
+            <!-- <span class="text-danger">
+              Enter a valid email address
+            </span> -->
+          </div>
+          <div class="form-group">
+            <label>Exam Date</label>
+            <!-- <ion-datetime min="1994-03-14"  max="2022-12-09" (ionChange)="datetimecheck()" required></ion-datetime> -->
+            <ion-item button="true" id="open-date-input">
+              <ion-label>Date</ion-label>
+              <ion-text slot="end">{{ dateValue | date: 'dd/MM/yyyy' }}</ion-text>
+              <ion-popover trigger="open-date-input" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime min="1994-03-14" max="2022-12-09"
+                    #popoverDate
+                    presentation="date"
+                    (ionChange)="dateValue = formatDate(popoverDate.value)"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+            <!-- <span class="text-danger" *ngIf="(examdate.touched || examForm.submitted) && examdate.errors?.required">
+              Exam Date is required
+            </span> -->
+            <!-- <span class="text-danger" >
+              User Name not available
+            </span> -->
+          </div>
+          <div class="form-group">
+            <label>Exam Time</label>
+            <ion-item button="true" id="open-time-input">
+              <ion-label>Time</ion-label>
+              <ion-text slot="end">{{ timeValue }}</ion-text>
+              <ion-popover trigger="open-time-input" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime
+                    #popoverTime
+                    presentation="time"
+                    (ionChange)="timeValue = formatTime(popoverTime.value)"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+          </div>
+          <!-- <ion-button id="trigger-button" (click)="openModal()" >CREATE EXAM DETAILS</ion-button>  -->
+          
+          <div class="form-group mt-3">
+            <button type="submit" class="btn btn-success" [disabled]="!examForm.valid">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <br>
+          <br>
+          <div *ngIf="totaldataexam.length==0">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+          <app-single-exam-record-object [searchedObject]="x" *ngFor="let x of totaldataexam"></app-single-exam-record-object>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div> -->
+  
+    <!-- <p *ngIf="user">{{user.id}}</p>
+    <p *ngIf="user">{{user.name}}</p> -->
+
+
+    <!-- <app-my-modal (newItemEvent)="addItem($event)"></app-my-modal> -->
+    <!-- <ul>
+      <li *ngFor="let item of items">{{item}}</li>
+    </ul> -->
+  </div>
+</ion-content>

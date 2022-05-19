@@ -1,10 +1,17 @@
 import { Time } from "@angular/common";
 
-export class exammodel{
+export class  exammodel{
     examname : string;
     examdate : any;
     examtime : any;
     examdatetime : any;
+}
+
+export const examModelInstance:exammodel={
+    examname : "",
+    examdate : "",
+    examtime : "",
+    examdatetime : ""
 }
 
 export class examdetails{
